@@ -7,8 +7,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        <h3>Convert From: </h3>
-        <h3>To:</h3>
-        <h4>Result: </h4>
+        <p>
+            <h:outputLabel for = "userIDHolder" rendered="#{userManager.started == true}" value = "Logged in as: "/>
+            <h:outputText id = "userIDHolder" value="#{userManager.userID}"/>
+            <h:outputText rendered="#{userManager.started == false}" value="Not logged in"/>
+        </p>
+        <p>
+            <h:outputLabel for="userIDSetter" rendered="#{userManager.userID == null}" value = "Set new ID: "/>
+            <h:inputText id="userIDSetter" value="#{userManager.updatedUser}"/>
+            <h:commandButton value="Set ID" action="#{userManager.updateUser}"/>
+        </p>
+        <p>
+            <h:outputLabel for="userIDRemover" rendered="#{userManager.userID != null}" value="Remove ID"/>
+            <h:commandButton value="Remove" action="#{userManager.removeUser}"/>
+        </p>
+        <p>
+            <h:outputLabel for="login" rendered="#{userManager.userID == null}" value="login"/>
+            <h:commandButton value="login" action="#{userManager.startConversation}"/>
+        </p>
     </h:body>
 </html>

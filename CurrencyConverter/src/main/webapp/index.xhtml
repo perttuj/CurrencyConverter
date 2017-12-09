@@ -1,29 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Currency Converter</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
-        <p>
-            <h:outputLabel for = "userIDHolder" rendered="#{userManager.started == true}" value = "Logged in as: "/>
-            <h:outputText id = "userIDHolder" value="#{userManager.userID}"/>
-            <h:outputText rendered="#{userManager.started == false}" value="Not logged in"/>
-        </p>
-        <p>
-            <h:outputLabel for="userIDSetter" rendered="#{userManager.userID == null}" value = "Set new ID: "/>
-            <h:inputText id="userIDSetter" value="#{userManager.updatedUser}"/>
-            <h:commandButton value="Set ID" action="#{userManager.updateUser}"/>
-        </p>
-        <p>
-            <h:outputLabel for="userIDRemover" rendered="#{userManager.userID != null}" value="Remove ID"/>
-            <h:commandButton value="Remove" action="#{userManager.removeUser}"/>
-        </p>
-        <p>
-            <h:outputLabel for="login" rendered="#{userManager.userID == null}" value="login"/>
-            <h:commandButton value="login" action="#{userManager.startConversation}"/>
-        </p>
+        <h:form>
+            <h1>Welcome to the converter!</h1>
+            <p>
+                <h3>
+                    Convert from: 
+                    <h:selectOneMenu value="test #{userManager.fromValue}">
+   			<f:selectItems value="#{userManager.currencies} #{userManager.fromCurrency}"/>
+                    </h:selectOneMenu>
+                </h3>
+            </p>
+            <p>
+                <h3>
+                    Convert to: 
+                    <h:selectOneMenu value="test">
+   			<f:selectItems value="#{userManager.currencies} #{userManager.toCurrency}" />
+                    </h:selectOneMenu>
+                </h3>
+            </p>
+            <p>
+                Amount: 
+                <h:inputText value="#{userManager.amount}"/>
+                <h:commandButton value="Convert" action="#{userManager.performConversion}"/>
+                From:
+                <h:outputText value="#{userManager.fromCurrency}"/>
+                To:
+                <h:outputText value="#{userManager.toCurrency}"/>
+            </p>
+            <h:outputLabel rendered="#{userManager.converted}" value="Conversion value: "/>
+            <h:outputText rendered="#{userManager.converted}" value="#{userManager.newAmount}"/>
+        </h:form>
     </h:body>
 </html>

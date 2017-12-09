@@ -1,1 +1,7 @@
+server\integration\Currency.class
+server\view\UserManager.class
+server\model\CurrencyConverter.class
 server\integration\CurrencyDAO.class
+server\controller\CurrencyFacade.class
+server\model\Conversion.class
+server\integration\Currency_.class

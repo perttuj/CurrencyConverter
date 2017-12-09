@@ -6,6 +6,7 @@
 package server.view;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 import javax.ejb.EJB;
 import javax.enterprise.context.Conversation;
@@ -25,7 +26,7 @@ public class UserManager implements Serializable {
     private CurrencyFacade contr;
     @Inject
     private Conversation conversation;
-    private Integer amt;
+    private double amt;
     private double result;
     private String fromCurrency;
     private String toCurrency;
@@ -46,7 +47,7 @@ public class UserManager implements Serializable {
         return this.toCurrency;
     }
     
-    public Map<String, Integer> getCurrencies() {
+    public List<String> getCurrencies() {
         return contr.getCurrencies();
     }
     public void performConversion() {
@@ -69,15 +70,15 @@ public class UserManager implements Serializable {
         }
     }
     public boolean getConverted() {
-        return this.result > 0;
+        return true;
     }
     public double getResult() {
         return this.result;
     }
-    public Integer getAmount() {
+    public double getAmount() {
         return this.amt;
     }
-    public void setAmount(Integer amount) {
+    public void setAmount(double amount) {
         this.amt = amount;
     }
 }

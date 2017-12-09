@@ -6,42 +6,44 @@
 package server.model;
 
 import java.io.Serializable;
-import java.util.Map;
+import java.util.List;
 import javax.ejb.EJB;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import server.integration.CurrencyDAO;
 
 /**
- *
+ *  Class that fetches and converts values received from the database
  * @author Perttu.Jaaskelainen
  */
-@Entity
+@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+@Stateless
 public class CurrencyConverter implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    
-    /**
-     * called to get the list of all available currencies
-     * @return 
-     */
-    public Map<String, Integer> getCurrencies() {
-        return CurrencyDAO.getCurrencies();
+    @EJB
+    CurrencyDAO dao;
+    public void addCurrency(String currency, double amount) {
+        dao.addCurrency(new Currency(currency, amount));
     }
-    
     /**
-     * perform a conversion between two currencies
+     * Gets all the currencies from the database
+     * @return  a list of all the currencies
+     */
+    public List<String> getCurrencies() {
+        return dao.getCurrencies();
+    }
+    /**
+     * Converts an amount from a currency 'from' to
+     * a currency 'to' using conversion values from the database
      * @param from  the currency to convert from
      * @param to    the currency to convert to
      * @param amount    the amount to convert
-     * @return  the converted amount
+     * @return      the converted amount
      */
-    public Integer convert(String from, String to, Integer amount) {
-        double fromVal = CurrencyDAO.getConversionValue(from);
-        double toVal   = CurrencyDAO.getConversionValue(to);
-        double diff = toVal / fromVal;
-        return (int) diff * amount;
+    public double convert(String from, String to, double amount) {
+        double fromRate = dao.getConversionRate(from);
+        double toRate   = dao.getConversionRate(to);
+        double base = amount / fromRate;
+        return base * toRate;
     }
 }

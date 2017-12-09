@@ -13,30 +13,30 @@
             <p>
                 <h3>
                     Convert from: 
-                    <h:selectOneMenu value="test #{userManager.fromValue}">
-   			<f:selectItems value="#{userManager.currencies} #{userManager.fromCurrency}"/>
+                    <h:selectOneMenu value="#{userManager.fromCurrency}">
+   			<f:selectItems value="#{userManager.currencies}"/>
                     </h:selectOneMenu>
                 </h3>
             </p>
             <p>
                 <h3>
                     Convert to: 
-                    <h:selectOneMenu value="test">
-   			<f:selectItems value="#{userManager.currencies} #{userManager.toCurrency}" />
+                    <h:selectOneMenu value="#{userManager.toCurrency}">
+   			<f:selectItems value="#{userManager.currencies}" />
                     </h:selectOneMenu>
                 </h3>
             </p>
             <p>
-                Amount: 
                 <h:inputText value="#{userManager.amount}"/>
                 <h:commandButton value="Convert" action="#{userManager.performConversion}"/>
-                From:
-                <h:outputText value="#{userManager.fromCurrency}"/>
-                To:
-                <h:outputText value="#{userManager.toCurrency}"/>
+                
+            </p>
+            <p>
+                <h:outputText value="#{userManager.amount} #{userManager.fromCurrency} "/>
+                <h:outputText value="is #{userManager.result} #{userManager.toCurrency}"/>
             </p>
             <h:outputLabel rendered="#{userManager.converted}" value="Conversion value: "/>
-            <h:outputText rendered="#{userManager.converted}" value="#{userManager.newAmount}"/>
+            <h:outputText rendered="#{userManager.converted}" value="#{userManager.result}"/>
         </h:form>
     </h:body>
 </html>

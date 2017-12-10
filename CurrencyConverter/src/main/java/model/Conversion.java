@@ -28,7 +28,7 @@ class Conversion implements ConversionDTO {
     }
 
     @Override
-    public double getBeforeAmont() {
+    public double getBeforeAmount() {
         return this.be;
     }
 

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import java.io.Serializable;
@@ -23,7 +18,7 @@ public class UserManager implements Serializable {
     @EJB    // inserts a CurrencyFacade object into the EJB container
     private CurrencyFacade contr;
     private ConversionDTO conversion = null;
-    private double amt;
+    private double amt = 0;
     private String fromCurrency;
     private String toCurrency;
     
@@ -90,7 +85,10 @@ public class UserManager implements Serializable {
      * @return 
      */
     public double getAmount() {
-        return this.conversion.getBeforeAmont();
+        if (conversion == null) {
+            return 0;
+        }
+        return this.conversion.getBeforeAmount();
     }
     /**
      * Sets the amount to convert to the 'to' currency

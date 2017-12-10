@@ -8,6 +8,6 @@ package model;
 public interface ConversionDTO {
     public String getFromCurrency();
     public String getToCurrency();
-    public double getBeforeAmont();
+    public double getBeforeAmount();
     public double getAfterAmount();
 }

@@ -31,12 +31,6 @@
                 <h:commandButton value="Convert" action="#{userManager.performConversion}"/>
                 
             </p>
-            <p>
-                <h:outputText value="#{userManager.amount} #{userManager.fromCurrency} "/>
-                <h:outputText value="is #{userManager.result} #{userManager.toCurrency}"/>
-            </p>
-            <h:outputLabel rendered="#{userManager.converted}" value="Conversion value: "/>
-            <h:outputText rendered="#{userManager.converted}" value="#{userManager.result}"/>
         </h:form>
     </h:body>
 </html>

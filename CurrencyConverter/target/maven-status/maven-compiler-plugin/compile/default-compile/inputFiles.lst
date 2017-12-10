@@ -1,6 +1,6 @@
-C:\Users\perttu.jaaskelainen\Documents\GitHub\CurrencyConverter\CurrencyConverter\src\main\java\server\model\Conversion.java
-C:\Users\perttu.jaaskelainen\Documents\GitHub\CurrencyConverter\CurrencyConverter\src\main\java\server\model\CurrencyConverter.java
-C:\Users\perttu.jaaskelainen\Documents\GitHub\CurrencyConverter\CurrencyConverter\src\main\java\server\integration\Currency.java
-C:\Users\perttu.jaaskelainen\Documents\GitHub\CurrencyConverter\CurrencyConverter\src\main\java\server\integration\CurrencyDAO.java
-C:\Users\perttu.jaaskelainen\Documents\GitHub\CurrencyConverter\CurrencyConverter\src\main\java\server\view\UserManager.java
-C:\Users\perttu.jaaskelainen\Documents\GitHub\CurrencyConverter\CurrencyConverter\src\main\java\server\controller\CurrencyFacade.java
+C:\Users\perttu.jaaskelainen\Documents\GitHub\CurrencyConverter\CurrencyConverter\src\main\java\view\UserManager.java
+C:\Users\perttu.jaaskelainen\Documents\GitHub\CurrencyConverter\CurrencyConverter\src\main\java\integration\CurrencyDAO.java
+C:\Users\perttu.jaaskelainen\Documents\GitHub\CurrencyConverter\CurrencyConverter\src\main\java\model\CurrencyConverter.java
+C:\Users\perttu.jaaskelainen\Documents\GitHub\CurrencyConverter\CurrencyConverter\src\main\java\model\Currency.java
+C:\Users\perttu.jaaskelainen\Documents\GitHub\CurrencyConverter\CurrencyConverter\src\main\java\model\Conversion.java
+C:\Users\perttu.jaaskelainen\Documents\GitHub\CurrencyConverter\CurrencyConverter\src\main\java\controller\CurrencyFacade.java
